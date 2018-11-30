@@ -18,6 +18,7 @@ package com.mlamp.cotto.sender.mail;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -57,259 +58,190 @@ public class DefaultMailCreator implements MailCreator {
 
     @Override
     public boolean createFirstErrorMessage(Object flow, EmailMessage message, String azkabanName, String scheme, String clientHostname, String clientPortNumber) {
+        //final ExecutionOptions option = flow.getExecutionOptions();
+        final List<String> emailList = new ArrayList<String>();
+        //final int execId = flow.getExecutionId();
+
+        if (emailList != null && !emailList.isEmpty()) {
+            message.addAllToAddress(emailList);
+            message.setMimeType("text/html");
+            message.setSubject("Flow '" + "test" + "' has encountered a failure on "
+                    + azkabanName);
+
+            message.println("<h2 style=\"color:#FF0000\"> Execution '"
+                    + "test" + "' of flow '" + "placeholder" + "' of project '"
+                    + "placeholder" + "' has encountered a failure on " + azkabanName + "</h2>");
+
+            message.println("<table>");
+            message.println("<tr><td>Start Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>End Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Duration</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Status</td><td>" + "placeholder" + "</td></tr>");
+            message.println("</table>");
+            message.println("");
+            final String executionUrl =
+                    scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
+                            + "executor?" + "execid=" + "placeholder";
+            message.println("<a href=\"" + executionUrl + "\">" + "placeholder"
+                    + " Execution Link</a>");
+
+            message.println("");
+            message.println("<h3>Reason</h3>");
+            final List<String> failedJobs = new ArrayList<String>();
+            message.println("<ul>");
+            for (final String jobId : failedJobs) {
+                message.println("<li><a href=\"" + executionUrl + "&job=" + jobId
+                        + "\">Failed job '" + jobId + "' Link</a></li>");
+            }
+
+            message.println("</ul>");
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean createErrorEmail(Object flow, List<Object> pastExecutions, EmailMessage message, String azkabanName, String scheme, String clientHostname, String clientPortNumber, String... reasons) {
+        //final ExecutionOptions option = flow.getExecutionOptions();
+        final List<String> emailList = new ArrayList<String>();
+        //final int execId = flow.getExecutionId();
+
+        if (emailList != null && !emailList.isEmpty()) {
+            message.addAllToAddress(emailList);
+            message.setMimeType("text/html");
+            message.setSubject("Flow '" + "test" + "' has encountered a failure on "
+                    + azkabanName);
+
+            message.println("<h2 style=\"color:#FF0000\"> Execution '"
+                    + "test" + "' of flow '" + "placeholder" + "' of project '"
+                    + "placeholder" + "' has encountered a failure on " + azkabanName + "</h2>");
+
+            message.println("<table>");
+            message.println("<tr><td>Start Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>End Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Duration</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Status</td><td>" + "placeholder" + "</td></tr>");
+            message.println("</table>");
+            message.println("");
+            final String executionUrl =
+                    scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
+                            + "executor?" + "execid=" + "placeholder";
+            message.println("<a href=\"" + executionUrl + "\">" + "placeholder"
+                    + " Execution Link</a>");
+
+            message.println("");
+            message.println("<h3>Reason</h3>");
+            final List<String> failedJobs = new ArrayList<String>();
+            message.println("<ul>");
+            for (final String jobId : failedJobs) {
+                message.println("<li><a href=\"" + executionUrl + "&job=" + jobId
+                        + "\">Failed job '" + jobId + "' Link</a></li>");
+            }
+
+            message.println("</ul>");
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean createSuccessEmail(Object flow, EmailMessage message, String azkabanName, String scheme, String clientHostname, String clientPortNumber) {
+        //final ExecutionOptions option = flow.getExecutionOptions();
+        final List<String> emailList = new ArrayList<String>();
+        //final int execId = flow.getExecutionId();
+
+        if (emailList != null && !emailList.isEmpty()) {
+            message.addAllToAddress(emailList);
+            message.setMimeType("text/html");
+            message.setSubject("Flow '" + "test" + "' has encountered a failure on "
+                    + azkabanName);
+
+            message.println("<h2 style=\"color:#FF0000\"> Execution '"
+                    + "test" + "' of flow '" + "placeholder" + "' of project '"
+                    + "placeholder" + "' has encountered a failure on " + azkabanName + "</h2>");
+
+            message.println("<table>");
+            message.println("<tr><td>Start Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>End Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Duration</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Status</td><td>" + "placeholder" + "</td></tr>");
+            message.println("</table>");
+            message.println("");
+            final String executionUrl =
+                    scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
+                            + "executor?" + "execid=" + "placeholder";
+            message.println("<a href=\"" + executionUrl + "\">" + "placeholder"
+                    + " Execution Link</a>");
+
+            message.println("");
+            message.println("<h3>Reason</h3>");
+            final List<String> failedJobs = new ArrayList<String>();
+            message.println("<ul>");
+            for (final String jobId : failedJobs) {
+                message.println("<li><a href=\"" + executionUrl + "&job=" + jobId
+                        + "\">Failed job '" + jobId + "' Link</a></li>");
+            }
+
+            message.println("</ul>");
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean createFailedUpdateMessage(List<Object> flows, Object executor, Object updateException, EmailMessage message, String azkabanName, String scheme, String clientHostname, String clientPortNumber) {
+        //final ExecutionOptions option = flow.getExecutionOptions();
+        final List<String> emailList = new ArrayList<String>();
+        //final int execId = flow.getExecutionId();
+
+        if (emailList != null && !emailList.isEmpty()) {
+            message.addAllToAddress(emailList);
+            message.setMimeType("text/html");
+            message.setSubject("Flow '" + "test" + "' has encountered a failure on "
+                    + azkabanName);
+
+            message.println("<h2 style=\"color:#FF0000\"> Execution '"
+                    + "test" + "' of flow '" + "placeholder" + "' of project '"
+                    + "placeholder" + "' has encountered a failure on " + azkabanName + "</h2>");
+
+            message.println("<table>");
+            message.println("<tr><td>Start Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>End Time</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Duration</td><td>"
+                    + "</td></tr>");
+            message.println("<tr><td>Status</td><td>" + "placeholder" + "</td></tr>");
+            message.println("</table>");
+            message.println("");
+            final String executionUrl =
+                    scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
+                            + "executor?" + "execid=" + "placeholder";
+            message.println("<a href=\"" + executionUrl + "\">" + "placeholder"
+                    + " Execution Link</a>");
+
+            message.println("");
+            message.println("<h3>Reason</h3>");
+            final List<String> failedJobs = new ArrayList<String>();
+            message.println("<ul>");
+            for (final String jobId : failedJobs) {
+                message.println("<li><a href=\"" + executionUrl + "&job=" + jobId
+                        + "\">Failed job '" + jobId + "' Link</a></li>");
+            }
+
+            message.println("</ul>");
+            return true;
+        }
         return false;
     }
 
-//  private static List<String> findFailedJobs(final ExecutableFlow flow) {
-//    final ArrayList<String> failedJobs = new ArrayList<>();
-//    for (final ExecutableNode node : flow.getExecutableNodes()) {
-//      if (node.getStatus() == Status.FAILED) {
-//        failedJobs.add(node.getId());
-//      }
-//    }
-//    return failedJobs;
-//  }
-//
-//  @Override
-//  public boolean createFirstErrorMessage(final ExecutableFlow flow,
-//      final EmailMessage message, final String azkabanName, final String scheme,
-//      final String clientHostname, final String clientPortNumber) {
-//
-//    final ExecutionOptions option = flow.getExecutionOptions();
-//    final List<String> emailList = option.getFailureEmails();
-//    final int execId = flow.getExecutionId();
-//
-//    if (emailList != null && !emailList.isEmpty()) {
-//      message.addAllToAddress(emailList);
-//      message.setMimeType("text/html");
-//      message.setSubject("Flow '" + flow.getFlowId() + "' has encountered a failure on "
-//          + azkabanName);
-//
-//      message.println("<h2 style=\"color:#FF0000\"> Execution '"
-//          + flow.getExecutionId() + "' of flow '" + flow.getFlowId() + "' of project '"
-//          + flow.getProjectName() + "' has encountered a failure on " + azkabanName + "</h2>");
-//
-//      if (option.getFailureAction() == FailureAction.CANCEL_ALL) {
-//        message
-//            .println("This flow is set to cancel all currently running jobs.");
-//      } else if (option.getFailureAction() == FailureAction.FINISH_ALL_POSSIBLE) {
-//        message
-//            .println("This flow is set to complete all jobs that aren't blocked by the failure.");
-//      } else {
-//        message
-//            .println("This flow is set to complete all currently running jobs before stopping.");
-//      }
-//
-//      message.println("<table>");
-//      message.println("<tr><td>Start Time</td><td>"
-//          + convertMSToString(flow.getStartTime()) + "</td></tr>");
-//      message.println("<tr><td>End Time</td><td>"
-//          + convertMSToString(flow.getEndTime()) + "</td></tr>");
-//      message.println("<tr><td>Duration</td><td>"
-//          + Utils.formatDuration(flow.getStartTime(), flow.getEndTime())
-//          + "</td></tr>");
-//      message.println("<tr><td>Status</td><td>" + flow.getStatus() + "</td></tr>");
-//      message.println("</table>");
-//      message.println("");
-//      final String executionUrl =
-//          scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
-//              + "executor?" + "execid=" + execId;
-//      message.println("<a href=\"" + executionUrl + "\">" + flow.getFlowId()
-//          + " Execution Link</a>");
-//
-//      message.println("");
-//      message.println("<h3>Reason</h3>");
-//      final List<String> failedJobs = findFailedJobs(flow);
-//      message.println("<ul>");
-//      for (final String jobId : failedJobs) {
-//        message.println("<li><a href=\"" + executionUrl + "&job=" + jobId
-//            + "\">Failed job '" + jobId + "' Link</a></li>");
-//      }
-//
-//      message.println("</ul>");
-//      return true;
-//    }
-//
-//    return false;
-//  }
-//
-//  @Override
-//  public boolean createErrorEmail(final ExecutableFlow flow, final List<ExecutableFlow>
-//      pastExecutions, final EmailMessage message, final String azkabanName, final String scheme,
-//      final String clientHostname, final String clientPortNumber, final String... reasons) {
-//
-//    final ExecutionOptions option = flow.getExecutionOptions();
-//
-//    final List<String> emailList = option.getFailureEmails();
-//    final int execId = flow.getExecutionId();
-//
-//    if (emailList != null && !emailList.isEmpty()) {
-//      message.addAllToAddress(emailList);
-//      message.setMimeType("text/html");
-//      message.setSubject("Flow '" + flow.getFlowId() + "' has failed on "
-//          + azkabanName);
-//
-//      message.println("<h2 style=\"color:#FF0000\"> Execution '" + execId
-//          + "' of flow '" + flow.getFlowId() + "' of project '"
-//          + flow.getProjectName() + "' has failed on " + azkabanName + "</h2>");
-//      message.println("<table>");
-//      message.println("<tr><td>Start Time</td><td>"
-//          + convertMSToString(flow.getStartTime()) + "</td></tr>");
-//      message.println("<tr><td>End Time</td><td>"
-//          + convertMSToString(flow.getEndTime()) + "</td></tr>");
-//      message.println("<tr><td>Duration</td><td>"
-//          + Utils.formatDuration(flow.getStartTime(), flow.getEndTime())
-//          + "</td></tr>");
-//      message.println("<tr><td>Status</td><td>" + flow.getStatus() + "</td></tr>");
-//      message.println("</table>");
-//      message.println("");
-//      final String executionUrl =
-//          scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
-//              + "executor?" + "execid=" + execId;
-//      message.println("<a href=\"" + executionUrl + "\">" + flow.getFlowId()
-//          + " Execution Link</a>");
-//
-//      message.println("");
-//      message.println("<h3>Reason</h3>");
-//      final List<String> failedJobs = findFailedJobs(flow);
-//      message.println("<ul>");
-//      for (final String jobId : failedJobs) {
-//        message.println("<li><a href=\"" + executionUrl + "&job=" + jobId
-//            + "\">Failed job '" + jobId + "' Link</a></li>");
-//      }
-//      for (final String reason : reasons) {
-//        message.println("<li>" + reason + "</li>");
-//      }
-//
-//      message.println("</ul>");
-//
-//      message.println("");
-//
-//      int failedCount = 0;
-//      for (final ExecutableFlow executableFlow : pastExecutions) {
-//        if (executableFlow.getStatus().equals(Status.FAILED)) {
-//          failedCount++;
-//        }
-//      }
-//
-//      message.println(String.format("<h3>Executions from past 72 hours (%s out %s) failed</h3>",
-//          failedCount, pastExecutions.size()));
-//      for (final ExecutableFlow executableFlow : pastExecutions) {
-//        message.println("<table>");
-//        message.println(
-//            "<tr><td>Execution Id</td><td>" + (executableFlow.getExecutionId()) + "</td></tr>");
-//        message.println("<tr><td>Start Time</td><td>"
-//            + convertMSToString(executableFlow.getStartTime()) + "</td></tr>");
-//        message.println("<tr><td>End Time</td><td>"
-//            + convertMSToString(executableFlow.getEndTime()) + "</td></tr>");
-//        message.println("<tr><td>Status</td><td>" + executableFlow.getStatus() + "</td></tr>");
-//        message.println("</table>");
-//      }
-//
-//      return true;
-//    }
-//    return false;
-//  }
-//
-//  @Override
-//  public boolean createSuccessEmail(final ExecutableFlow flow, final EmailMessage message,
-//      final String azkabanName, final String scheme, final String clientHostname,
-//      final String clientPortNumber) {
-//
-//    final ExecutionOptions option = flow.getExecutionOptions();
-//    final List<String> emailList = option.getSuccessEmails();
-//
-//    final int execId = flow.getExecutionId();
-//
-//    if (emailList != null && !emailList.isEmpty()) {
-//      message.addAllToAddress(emailList);
-//      message.setMimeType("text/html");
-//      message.setSubject("Flow '" + flow.getFlowId() + "' has succeeded on "
-//          + azkabanName);
-//
-//      message.println("<h2> Execution '" + flow.getExecutionId()
-//          + "' of flow '" + flow.getFlowId() + "' of project '"
-//          + flow.getProjectName() + "' has succeeded on " + azkabanName + "</h2>");
-//      message.println("<table>");
-//      message.println("<tr><td>Start Time</td><td>"
-//          + convertMSToString(flow.getStartTime()) + "</td></tr>");
-//      message.println("<tr><td>End Time</td><td>"
-//          + convertMSToString(flow.getEndTime()) + "</td></tr>");
-//      message.println("<tr><td>Duration</td><td>"
-//          + Utils.formatDuration(flow.getStartTime(), flow.getEndTime())
-//          + "</td></tr>");
-//      message.println("<tr><td>Status</td><td>" + flow.getStatus() + "</td></tr>");
-//      message.println("</table>");
-//      message.println("");
-//      final String executionUrl =
-//          scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
-//              + "executor?" + "execid=" + execId;
-//      message.println("<a href=\"" + executionUrl + "\">" + flow.getFlowId()
-//          + " Execution Link</a>");
-//      return true;
-//    }
-//    return false;
-//  }
-//
-//  @Override
-//  public boolean createFailedUpdateMessage(final List<ExecutableFlow> flows,
-//      final Executor executor, final ExecutorManagerException updateException,
-//      final EmailMessage message, final String azkabanName,
-//      final String scheme, final String clientHostname, final String clientPortNumber) {
-//
-//    final ExecutionOptions option = flows.get(0).getExecutionOptions();
-//    final List<String> emailList = option.getFailureEmails();
-//
-//    if (emailList != null && !emailList.isEmpty()) {
-//      message.addAllToAddress(emailList);
-//      message.setMimeType("text/html");
-//      message.setSubject(
-//          "Flow status could not be updated from " + executor.getHost() + " on " + azkabanName);
-//
-//      message.println(
-//          "<h2 style=\"color:#FF0000\"> Flow status could not be updated from " + executor.getHost()
-//              + " on " + azkabanName + "</h2>");
-//
-//      message.println("The actual status of these executions is unknown, "
-//          + "because getting status update from azkaban executor is failing");
-//
-//      message.println("");
-//      message.println("<h3>Error detail</h3>");
-//      message.println("<pre>" + ExceptionUtils.getStackTrace(updateException) + "</pre>");
-//
-//      message.println("");
-//      message.println("<h3>Affected executions</h3>");
-//      message.println("<ul>");
-//      for (final ExecutableFlow flow : flows) {
-//        final int execId = flow.getExecutionId();
-//        final String executionUrl =
-//            scheme + "://" + clientHostname + ":" + clientPortNumber + "/"
-//                + "executor?" + "execid=" + execId;
-//
-//        message.println("<li>Execution '" + flow.getExecutionId() + "' of flow '" + flow.getFlowId()
-//            + "' of project '" + flow.getProjectName() + "' - " +
-//            " <a href=\"" + executionUrl + "\">Execution Link</a></li>");
-//      }
-//
-//      message.println("</ul>");
-//      return true;
-//    }
-//
-//    return false;
-//  }
 }
